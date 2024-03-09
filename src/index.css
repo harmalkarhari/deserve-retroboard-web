@@ -1,0 +1,23 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.875rem;
+}
+
+code {
+  font-family: 'Inter', sans-serif !important;
+}
+/* TODO: Add font files 
+@font-face {
+  font-family: "inter-thin";
+  src: local("inter-thin"),
+      url(./assets/fonts/Inter-Thin.otf);
+}
+*/

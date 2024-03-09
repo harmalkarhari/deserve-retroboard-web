@@ -1,0 +1,1 @@
+Add images png, jpeg, svg etc used in the application
