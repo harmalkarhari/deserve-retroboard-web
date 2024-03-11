@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createPost, deletePost, updatePost } from '../../api/posts.api';
+import { createPost, deletePost, fetchPosts, updatePost } from '../../api/posts.api';
 
 export interface Post {
   text: string;
@@ -9,6 +9,18 @@ export interface Post {
 export interface PostWithId extends Post {
   id: string;
 }
+
+export const getPosts = createAsyncThunk<Array<PostWithId>, void>(
+  'post/getall',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response: any = await fetchPosts();
+      return response;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
 
 export const addPost = createAsyncThunk<PostWithId, Post>(
   'post/add',
@@ -35,7 +47,7 @@ export const editPost = createAsyncThunk<PostWithId, PostWithId>(
   },
 );
 
-export const removePost = createAsyncThunk<void, PostWithId>(
+export const removePost = createAsyncThunk<{ id: string }, PostWithId>(
   'post/remove',
   async (payload, { rejectWithValue }) => {
     const { id } = payload;
